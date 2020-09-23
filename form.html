@@ -1,0 +1,95 @@
+<html>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+</head>
+
+<body>
+    <div class="Heading">
+        <h4> Manage permission</h4>
+    </div>
+
+    <select name="Property" id="Property">
+        <option value="volvo">Property</option>
+        <option value="saab">Testimonial</option>
+        <option value="opel">Users</option>
+        <option value="audi">Membership</option>
+    </select>
+    <br>
+    <div class="Grandparent">
+        <div class="family">
+            <div class="parent1">
+                <input type="checkbox" class="parent" id="parent1" value="Property" /> Property
+                <div class="child">
+                    <input type="checkbox" id="child" value="Edit Property" /> Edit Property<br>
+                    <input type="checkbox" id="child" value="Remove Property" /> Remove Property<br>
+                    <input type="checkbox" id="child" value="Add Property" /> Add Property<br>
+                </div>
+            </div>
+        </div>
+
+        <div class="family">
+            <div class="parent2">
+                <input type="checkbox" class="parent" id="parent2" value="Testimonial" /> Testimonial
+                <div class="child">
+                    <input type="checkbox" id="child" value="Add" /> Add<br>
+                    <input type="checkbox" id="child" value="Remove" /> Remove<br>
+                    <input type="checkbox" id="child" value="View" />View<br>
+                    <input type="checkbox" id="child" value="Edit" /> Edit<br>
+                </div>
+            </div>
+        </div>
+
+        <div class="family">
+            <div class="parent3">
+                <input type="checkbox" class="parent" id="parent3" value="Users" /> Users
+                <div class="child">
+                    <input type="checkbox" id="child" value="Edit User" /> Edit User<br>
+                    <input type="checkbox" id="child" value="View User List" /> View User List<br>
+                    <input type="checkbox" id="child" value="Add_User" /> Add_User<br>
+                </div>
+            </div>
+
+            <div class="family">
+                <div class="parent4">
+                    <input type="checkbox" class="parent" id="parent4" value="Membership" />Membership
+                    <div class="child">
+                        <input type="checkbox" id="child" value="Edit Membership" /> Edit Membership<br>
+                        <input type="checkbox" id="child" value="Remove Membership" /> Remove Membership<br>
+                        <input type="checkbox" id="child" value="Add  Membership" /> Add Membership<br>
+                    </div>
+                </div>
+            </div>
+            <br>
+
+            <button>
+                Submit
+            </button>
+
+            <script>
+                $(function () {
+                    $('input').change(function (event) {
+                        if (event.target.checked) {
+                            $(`.${event.target.id} .child input`).attr('checked', 'checked');
+                        } else {
+                            $(`.${event.target.id} .child input`).attr('checked', false);
+                        }
+                    });
+                    // $(".parent input:checkbox").click(function () {
+                    //     var child = $(this).parent().next(".child");
+                    //     $("input:checkbox", child).attr('checked', this.false);
+                    // });
+                    $('input').change(function (event) {
+                        if (event.target.checked) {
+                            $(`.${event.target.id} .family input`).attr('checked', 'checked');
+                        } else {
+                            $(`.${event.target.id} .family input`).attr('checked', false);
+                        }
+                    });
+                });
+            </script>
+</body>
+
+</html>
