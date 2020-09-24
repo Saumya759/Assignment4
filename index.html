@@ -1,0 +1,81 @@
+<htm>
+
+    <head>
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    </head>
+
+    <body>
+        <div class="Heading">
+            <h4> Manage permission</h4>
+        </div>
+
+        <select name="Property" id="Property">
+            <option value="volvo">Property</option>
+            <option value="saab">Testimonial</option>
+            <option value="opel">Users</option>
+            <option value="audi">Membership</option>
+        </select>
+
+        <ul class="Grandparent">
+           
+            <li>
+                <input type="checkbox" name="level-2">Property</input>
+                <ul>
+                    <li><input type="checkbox" name="level-3">Edit Propert</input></li>
+                    <li><input type="checkbox" name="level-3">Remove Property</input></li>
+                    <li><input type="checkbox" name="level-3">Add Property</input></li>
+                </ul>
+            </li>
+            
+            <li>
+                <input type="checkbox" name="level-2">Testimonial</input>
+                <ul>
+                    <li><input type="checkbox" name="level-3">Add</input></li>
+                    <li><input type="checkbox" name="level-3">Remove</input></li>
+                    <li><input type="checkbox" name="level-3">View</input></li>
+                    <li><input type="checkbox" name="level-3">Edit</input></li>
+                </ul>
+            </li>
+            
+            <li>
+                <input type="checkbox" name="level-2">Users</input>
+                <ul>
+                    <li><input type="checkbox" name="level-3">Edit User </input></li>
+                    <li><input type="checkbox" name="level-3">View User List</input></li>
+                    <li><input type="checkbox" name="level-3">Add User</input></li>
+                </ul>
+            </li>
+
+            <li>
+                <input type="checkbox" name="level-2">Membership</input>
+                <ul>
+                    <li><input type="checkbox" name="level-3">Edit Membership </input></li>
+                    <li><input type="checkbox" name="level-3">Remove Membership</input></li>
+                    <li><input type="checkbox" name="level-3">Add Membership</input></li>
+                </ul>
+            </li>
+        </ul>
+        <script>
+            $('.Grandparent :checkbox').bind('click', function () {
+                var $chk = $(this), $li = $chk.closest('li'), $ul, $parent;
+                if ($li.has('ul')) {
+                    $li.find(':checkbox').not(this).prop('checked', this.checked)
+                }
+
+                do {
+                    $ul = $li.parent();
+                    $parent = $ul.siblings(':checkbox');
+                    if ($chk.is(':checked')) {
+                        $parent.prop('checked', $ul.has(':checkbox:not(:checked)').length == 0)
+                    } else {
+                        $parent.prop('checked', false)
+                    }
+                    $chk = $parent;
+                    $li = $chk.closest('li');
+                } while ($ul.is(':not(.Grandparent)'));
+            });
+        </script>
+    </body>
+</htm>
